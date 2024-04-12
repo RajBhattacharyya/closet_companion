@@ -6,16 +6,16 @@ const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
+dbConnect();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    credentials: true,
     origin: ["http://localhost:5173", "http://192.168.29.101:5173"]
 }));
 
 app.use("/api/v1", mainRouter);
-dbConnect();
+
 
 app.listen(3000, () => {
     console.log('server is running on http://localhost:3000');
